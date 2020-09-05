@@ -57,6 +57,11 @@ class LoginViewController: UIViewController {
                 // Couldn't sign in
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
+                
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                 alert.addAction(defaultAction)
+                                 self.present(alert, animated: true, completion: nil)
             }
             else {
                 

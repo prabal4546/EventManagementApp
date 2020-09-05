@@ -94,7 +94,11 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     
                     // There was an error creating the user
-                    self.showError("Error creating user")
+            //        self.showError("Error creating user")
+                    let alert = UIAlertController(title: "Error", message: error?.description, preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(defaultAction)
+                    self.present(alert, animated: true, completion: nil)
                 }
                 else {
                     
@@ -106,6 +110,13 @@ class SignUpViewController: UIViewController {
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
+                            self.errorLabel.text = error!.localizedDescription
+                            self.errorLabel.alpha = 1
+                            
+                            let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            alert.addAction(defaultAction)
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                     

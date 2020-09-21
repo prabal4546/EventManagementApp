@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController {
                     
                     // There was an error creating the user
             //        self.showError("Error creating user")
-                    let alert = UIAlertController(title: "Error", message: error?.description, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: err?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alert.addAction(defaultAction)
                     self.present(alert, animated: true, completion: nil)

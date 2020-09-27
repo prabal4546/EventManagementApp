@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var signupPageTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,5 +146,21 @@ class SignUpViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         
     }
+    //MARK:-View Lifecycle
+       override func viewWillAppear(_ animated: Bool) {
+           signupPageTitle.alpha = 0
+           
+       }
+       
+       override func viewDidAppear(_ animated: Bool) {
+            animateTitleInWithSpring()
+          }
+       
+       func animateTitleInWithSpring(){
+           UIView.animate(withDuration: 2.0, delay: 0.25, usingSpringWithDamping: 0.2, initialSpringVelocity: 5, options: [], animations: {
+               self.signupPageTitle.alpha = 1
+               self.signupPageTitle.frame.origin.y += 50
+           }, completion: nil)
+       }
     
 }

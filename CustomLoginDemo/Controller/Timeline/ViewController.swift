@@ -21,15 +21,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         setUpElements()
+        //ANIMATION STUFF
+        imageView.alpha = 0
+
+        titleLabel.text = " "
+        var charIndex = 0.0
+        let titleText = "Event Manager"
+        for letter in titleText{
+            print(0.1*charIndex)
+            print(letter)
+            Timer.scheduledTimer(withTimeInterval: 0.2*charIndex, repeats: false){(timer) in
+                self.titleLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         // Set up video in the background
 //        setUpVideo()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        animateImage()
     }
     
     func setUpElements() {
@@ -69,7 +84,18 @@ class ViewController: UIViewController {
 //        videoPlayer?.playImmediately(atRate: 0.3)
     
 //        }
-
-
+    
+//MARK:-
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    func animateImage(){
+        UIView.animate(withDuration: 1.5, delay: 0.75, options: [.transitionCurlUp], animations: {
+            self.imageView.alpha = 1
+            self.imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { (completed) in
+            
+        }
+    }
 }
 
